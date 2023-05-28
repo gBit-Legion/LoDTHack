@@ -28,7 +28,7 @@
 
 ### Руководство администратора
 
-Мы документируем наши рекомендации по использованию нашего решения в [Руководство администратора](https://github.com/K-Team-Coders/Collaboration/blob/main/fastApi/Readme.md).
+Мы документируем наши рекомендации по использованию нашего решения в [Руководство администратора](https://github.com/gBit-Legion/LoDTHack/blob/main/fastApi/Readme.md).
 
 ### Авторы
 
