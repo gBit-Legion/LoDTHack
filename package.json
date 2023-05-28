@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue-datepicker-ui": "^2.3.0"
+  }
+}
