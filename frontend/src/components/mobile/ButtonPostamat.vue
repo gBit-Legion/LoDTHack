@@ -7,7 +7,8 @@
             </header>
 
             <main class="main">
-                <RatingPostamat v-model="checkedRating" />
+                <SelectMarket/>
+                <RatingPostamat v-model="checkedRating"/>
                 <div class="checkbox_main">
                     <ul>
                         <li>
@@ -63,10 +64,12 @@
 <script>
 import RatingPostamat from '../RatingPostamat.vue'
 import FrontEnd from './FrontEnd.vue';
+import SelectMarket from '../SelectMarket.vue';
 export default {
     components: {
         RatingPostamat,
-        FrontEnd
+        FrontEnd,
+        SelectMarket
     },
     data() {
         return {
@@ -91,13 +94,13 @@ export default {
 
         async sendData() {
             const data = {
-                mark: this.data.checkedRating,
+                mark: this.checkedRating,
                 usertext: {
-                    checked: this.data.checked,
-                    checkedText: this.data.checkedText
+                    checked: this.checked,
+                    checkedText: this.checkedText
                 },
-                reviewdate: this.data.reviewdate,
-                adress: this.data.adress,
+                reviewdate: this.reviewdate,
+                adress: this.adress,
             }
             await axios.post('http://178.170.196.251:8081/addReview/', data)
         },

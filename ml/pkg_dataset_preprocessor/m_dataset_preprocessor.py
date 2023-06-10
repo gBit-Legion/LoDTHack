@@ -9,6 +9,7 @@ import string
 lst_stopwords = nltk.corpus.stopwords.words('russian')
 lst_stopwords.extend(['…', '«', '»', '...'])
 
+
 class DatasetPreprocessor():
     def clean_text(self, text, tokenizer, stopwords):
         text = str(text).lower()
@@ -34,7 +35,8 @@ class DatasetPreprocessor():
         #     df_raw[col] = df_raw[col].astype(str)
         # создаем текст основанный на content title и tag
         df_raw["text"] = df_raw[text_columns].apply(lambda x: " | ".join(x), axis=1)
-        df_raw["tokens"] = df_raw["text"].map(lambda x: dataset_preprocessor.clean_text(x, word_tokenize, lst_stopwords))
+        df_raw["tokens"] = df_raw["text"].map(
+            lambda x: dataset_preprocessor.clean_text(x, word_tokenize, lst_stopwords))
         _, idx = np.unique(df_raw["tokens"], return_index=True)
         df_raw = df_raw.iloc[idx, :]
 
@@ -61,6 +63,7 @@ class DatasetPreprocessor():
             else:
                 features.append(zero_vector)
         return features
+
 
 def preprocessing_text(df_raw):
     dataset_preprocessor = DatasetPreprocessor()

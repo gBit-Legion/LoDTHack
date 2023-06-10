@@ -70,6 +70,7 @@ def parser_url():
                     pass
         except:
             print("Ну нет этой кнопки нуу нет !")
+            break
 
         reviews = driver.find_elements(By.XPATH, '//*[@class="business-review-view__info"]')
 
@@ -87,6 +88,7 @@ def parser_url():
             except IntegrityError as e:
                 print(e)
             session.close()"""
+            break
 
 
 def search_elements():

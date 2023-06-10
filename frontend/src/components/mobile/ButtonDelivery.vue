@@ -77,13 +77,13 @@ export default {
 
     async sendData() {
       const data = {
-        mark: this.data.checkedRating,
+        mark: this.checkedRating,
         usertext: {
-          checked: this.data.checked,
-          checkedText: this.data.checkedText
+          checked: this.checked,
+          checkedText: this.checkedText
         },
-        reviewdate: this.data.reviewdate,
-        adress: this.data.adress,
+        reviewdate: this.reviewdate,
+        adress: this.adress,
       }
       await axios.post('http://178.170.196.251:8081/addReview/', data)
     }

@@ -25,6 +25,12 @@ const routes = [
 
     component:() => import ('../components/Whatsay.vue')
   },
+  {
+    path: "/postamat",
+    name: 'postamat',
+
+    component:() => import ('../components/postamat/PickPointHalva.vue')
+  },
 
 ];
 

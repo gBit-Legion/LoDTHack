@@ -3,9 +3,9 @@
     <div class="min-h-screen bg-no-repeat font-TT_Firs_Neue_Regular">
       <section class="pt-60 ml-20 text-[#E2E7EE]">
         <div class="flex justify-start">
-          <div class="w-2/5">
+          <div class="w-2/5 pl-6">
             <div class="flex flex-col gap-2">
-              <p class="text-5xl font-TT_Firs_Neue_Bold uppercase">
+              <p class="text-6xl  font-TT_Firs_Neue_Bold uppercase">
                 Хочу помочь постамату!
               </p>
               <p class="font-medium text-lg">
@@ -62,7 +62,10 @@
                 leave-from-class="opacity-100"
                 leave-to-class="opacity-0"
               >
-                <div class="text-[#E2E7EE] mt-2 " v-show="data.article.length > 6">
+                <div
+                  class="text-[#E2E7EE] mt-2"
+                  v-show="data.article.length > 6"
+                >
                   <RadiobuttonProblem
                     v-for="(problem, index) in problems"
                     :key="index"
@@ -96,24 +99,23 @@ export default {
     RadiobuttonProblem,
     Rating
   },
-  mounted(){
+  mounted () {
     this.get_date()
   },
-  
+
   data () {
     return {
       data: {
-      id: 0,
-      article: '',
-      usertext: '',
-      classnumber: 0,
-      mark: 0,
-      adress: "ул. Косинская, д. 26, к. 1, Москва",
-      reviewdate: 
-      this.get_date(),
-      seller: "Я.Маркет(веб)"
+        id: 0,
+        article: '',
+        usertext: '',
+        classnumber: 0,
+        mark: 0,
+        adress: 'ул. Косинская, д. 26, к. 1, Москва',
+        reviewdate: this.get_date(),
+        seller: 'Я.Маркет(веб)'
       },
-    
+
       problems: [
         { massage: 'Проблем нет' },
         { massage: 'Проблем с товаром' },
@@ -124,12 +126,12 @@ export default {
     }
   },
   methods: {
-    get_date(){
-      let moment = require('moment');
- 
-// получаем название месяца, день месяца, год, время
-let now = moment().format("YYYY-MM-DD HH:mm:ss");
-console.log(now);
+    get_date () {
+      let moment = require('moment')
+
+      // получаем название месяца, день месяца, год, время
+      let now = moment().format('YYYY-MM-DD HH:mm:ss')
+      console.log(now)
       return now
     },
     async sendData () {
@@ -142,10 +144,12 @@ console.log(now);
         reviewdate: this.data.reviewdate,
         classnumber: this.data.classnumber,
         mark: this.data.mark,
-        latitude:0,
-    longitude: 0,
+        latitude: 0,
+        longitude: 0
       }
       await axios.post('http://178.170.196.251:8081/addReview/', data)
+      alert('Спасибо, Ваше мнение нам важно!')
+      location.reload()
     },
     chooseProblem (index) {
       this.checkedProblems = index

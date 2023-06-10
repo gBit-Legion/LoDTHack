@@ -24,15 +24,11 @@
       class="px-5 py-3 shadow-innerMax h-full"
       v-show="$attrs.activeindex === 1"
     >
-      <div class="flex flex-col mt-3">
+      <div class="h-full py-12">
         <div class="flex flex-row justify-center gap-2">
           <BarChartWithPanels :bardata="allpostamats.classStats" />
-          <!-- <AreaChartApex :data_chart="allpostamats.timeStats" /> -->
-        </div>
-        <div class="w-full mt-3 flex justify-center">
-          <div class="w-2/3 ml-2">
-            <RadarChartWithPanels :radardata="allpostamats.marketStats" />
-          </div>
+          <AreaChartApex :data_chart="allpostamats.timeStats" />
+          <RadarChartWithPanels :radardata="allpostamats.marketStats" />
         </div>
       </div>
     </div>
@@ -42,7 +38,11 @@
     >
       <Table :postamats_list="allpostamats.adressStats" />
       <div class="flex justify-start mt-2">
-        <DownloadButton @click="downloadFileTable1()" label="Импорт в .csv" icon="document" />
+        <DownloadButton
+          @click="downloadFileTable1()"
+          label="Импорт в .csv"
+          icon="document"
+        />
       </div>
     </div>
     <div
@@ -51,7 +51,11 @@
     >
       <Table2 :postamats_list="allpostamats.data" />
       <div class="flex justify-start mt-2">
-        <DownloadButton @click="downloadFileTable2()" label="Импорт в .csv" icon="document" />
+        <DownloadButton
+          @click="downloadFileTable2()"
+          label="Импорт в .csv"
+          icon="document"
+        />
       </div>
     </div>
   </div>
@@ -62,7 +66,7 @@ import Table2 from './Table2.vue'
 import Map from '@/components/Map.vue'
 import Table from '@/components/Table.vue'
 import DownloadButton from '@/components/DownloadButton.vue'
-// import AreaChartApex from "@/components/charts/AreaChartApex.vue";
+import AreaChartApex from "@/components/charts/AreaChartApex.vue";
 import Filter from '@/components/Filter.vue'
 import Button from '@/components/Button.vue'
 import BarChart from '@/components/charts/BarChart.vue'
@@ -73,7 +77,7 @@ export default {
   components: {
     Table2,
     BarChart,
-    // AreaChartApex,
+    AreaChartApex,
     Button,
     BarChartWithPanels,
     Panel,
@@ -83,26 +87,34 @@ export default {
     RadarChartWithPanels,
     Table
   },
- 
-  methods:{
-    downloadFileTable1(){
-   axios.get("http://178.170.196.251:8080/getAdminPageAdressStatsFile/").then((res) => {
-      const url = URL.createObjectURL(new Blob([res.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "Отчет распределения наиболее популярных проблем по адресам.csv");
-      link.click();
-   });
+
+  methods: {
+    downloadFileTable1 () {
+      axios
+        .get('http://178.170.196.251:8080/getAdminPageAdressStatsFile/')
+        .then(res => {
+          const url = URL.createObjectURL(new Blob([res.data]))
+          const link = document.createElement('a')
+          link.href = url
+          link.setAttribute(
+            'download',
+            'Отчет распределения наиболее популярных проблем по адресам.csv'
+          )
+          link.click()
+        })
+    },
+    downloadFileTable2 () {
+      axios
+        .get('http://178.170.196.251:8080/getAdminPageClassesStatsFile/')
+        .then(res => {
+          const url = URL.createObjectURL(new Blob([res.data]))
+          const link = document.createElement('a')
+          link.href = url
+          link.setAttribute('download', 'Отчет по классификации отзывов.csv')
+          link.click()
+        })
+    }
   },
-  downloadFileTable2(){
-   axios.get("http://178.170.196.251:8080/getAdminPageClassesStatsFile/").then((res) => {
-      const url = URL.createObjectURL(new Blob([res.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "Отчет по классификации отзывов.csv");
-      link.click();
-   });
-  }},
   computed: {
     postamat_count () {
       let adress_list = []
@@ -114,7 +126,7 @@ export default {
     }
   },
   props: {
-    allpostamats: Object,
-  },
+    allpostamats: Object
+  }
 }
 </script>

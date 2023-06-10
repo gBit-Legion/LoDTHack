@@ -1,6 +1,5 @@
 <template>
     <body>
-
         <PostamatMobileAllGood v-show="button_good"></PostamatMobileAllGood>
         <ButtonPostamat v-show="button_postamat"></ButtonPostamat>
         <ButtonDelivery v-show="button_delivery"></ButtonDelivery>
@@ -17,19 +16,21 @@
                                 <h1 class="py-2">Поделитесь своим<br> мнением и&nbsp;помогите нам<br> стать лучше!</h1>
                                 <img class="main_box--img" src="../mobile/image/1.svg" alt="иконка">
                                 <span>Возникали&nbsp;ли у&nbsp;вас проблемы<br> с&nbsp;получением заказа?</span>
-
                                 <a>
                                     <button @click="button_good = true" class="button good-button" id="0">Все
                                         отлично!</button>
                                 </a>
                                 <a>
-                                    <button @click="button_postamat = true" class="button" id="1">С постаматом</button>
+                                    <button @click="button_postamat = true" class="button postamat-button" id="1">С
+                                        постаматом</button>
                                 </a>
                                 <a>
-                                    <button @click="button_delivery = true" class="button" id="2">С доставкой</button>
+                                    <button @click="button_delivery = true" class="button delivery-button" id="2">С
+                                        доставкой</button>
                                 </a>
                                 <a>
-                                    <button @click="button_article = true" class="button" id="3">С товаром</button>
+                                    <button @click="button_article = true" class="button article-button" id="3">С
+                                        товаром</button>
                                 </a>
                             </div>
                         </main>
@@ -74,7 +75,7 @@ export default {
         }
     },
     methods: {
-
+        
     }
 }
 </script>
@@ -123,7 +124,7 @@ p {
 }
 
 .main_box--img {
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 .button {
@@ -143,11 +144,34 @@ p {
     cursor: pointer;
 }
 
-
 .good-button {
     margin-bottom: 16px;
     background: #E2E7EE;
     color: #ff1935;
+}
+
+.good-button::before {
+    content: url(../mobile/image/good.svg);
+    position: fixed;
+    left: 10%;
+}
+
+.postamat-button::before {
+    content: url(../mobile/image/postamat-icon.svg);
+    position: fixed;
+    left: 8%;
+}
+
+.delivery-button::before {
+    content: url(../mobile/image/delivery.svg);
+    position: fixed;
+    left: 10%;
+}
+
+.article-button::before {
+    content: url(../mobile/image/article.svg);
+    position: fixed;
+    left: 10%;
 }
 
 .full-stars {
@@ -362,17 +386,53 @@ ul li {
     margin-top: 40%;
 }
 
-@media screen and (max-height: 730px) { 
+@media screen and (max-height: 730px) {
     .button {
         width: 340px;
         height: 50px;
         font-size: 18px;
     }
+
+    .main_box--img {
+        margin: 10px;
+    }
 }
 
-@media screen and (max-width: 360px) { 
+@media screen and (max-width: 360px) {
     .button {
         width: 330px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .py-2 {
+        font-size: 18px;
+    }
+
+    .button {
+        width: 260px;
+    }
+
+    .good-button::before {
+        content: '';
+        position: fixed;
+        left: 10%;
+    }
+
+    .postamat-button::before {
+        content: '';
+        position: fixed;
+        left: 8%;
+    }
+
+    .delivery-button::before {
+        content: '';
+        position: fixed;
+        left: 10%;
+    }
+
+    .article-button::before {
+        content: '';
     }
 }
 </style>
