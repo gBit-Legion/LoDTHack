@@ -6,6 +6,7 @@
         <img class="head_logo" src="../mobile/image/logo.svg" alt="логотип">
       </header>
       <main class="main">
+                <SelectMarket/>
         <RatingArticle v-model="checkedRating" />
         <div class="checkbox_main">
           <ul>
@@ -49,10 +50,12 @@
 <script>
 import RatingArticle from '../RatingArticle.vue';
 import FrontEnd from './FrontEnd.vue';
+import SelectMarket from '../SelectMarket.vue';
 export default {
   components: {
     RatingArticle,
-    FrontEnd
+    FrontEnd,
+    SelectMarket
   },
   data() {
     return {

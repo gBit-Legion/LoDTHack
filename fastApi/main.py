@@ -648,8 +648,8 @@ def adminPageClassesStatsFile():
 
 
 # Генерируем qr-code и отправляем ответ
-@app.get("/img/qr-code/")
-def generate_qr_code(id: int):
+@app.get("/img/qr_code_postamat/qr-code.png")
+def generate_qr_code():
 
     # Заппрос к базе с получением случайной строчки
     cur.execute(f"SELECT * FROM xdataset")

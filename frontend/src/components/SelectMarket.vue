@@ -3,11 +3,11 @@
         <p>Откуда заказывали:</p>
         <select @focus="onSelectFocus" @blur="onSelectBlur" @change="onSelectChange" @mouseover="onSelectMouseOver"
             @mouseout="onSelectMouseOut" size="1">
-            <option value="">ЯндексМаркет</option>
+            <option value="">Яндекс</option>
             <option value="1">OZON</option>
             <option value="2">Wildberries</option>
             <option value="3">СДЭК Маркет</option>
-            <option value="3">Lamoda</option>
+            <option value="4">Lamoda</option>
         </select>
     </div>
 </template>
@@ -77,14 +77,15 @@ select option:hover {
 }
 
 select option:checked {
-    box-shadow: 0 0 10px 100px #2F3342 inset;
+    color: #ffffff;
+    box-shadow: 0 0 10px 100px #BFCADA inset;
 }
 
 .fadeIn {
     background-color: #ffffff;
     position: relative;
-    top: 200px;
-    width: 300px;
+    top: 180px;
+    width: 100%;
     z-index: 10;
 }
 </style>

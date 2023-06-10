@@ -27,7 +27,6 @@
       <div class="h-full py-12">
         <div class="flex flex-row justify-center gap-2">
           <BarChartWithPanels :bardata="allpostamats.classStats" />
-          <AreaChartApex :data_chart="allpostamats.timeStats" />
           <RadarChartWithPanels :radardata="allpostamats.marketStats" />
         </div>
       </div>
@@ -66,7 +65,6 @@ import Table2 from './Table2.vue'
 import Map from '@/components/Map.vue'
 import Table from '@/components/Table.vue'
 import DownloadButton from '@/components/DownloadButton.vue'
-import AreaChartApex from "@/components/charts/AreaChartApex.vue";
 import Filter from '@/components/Filter.vue'
 import Button from '@/components/Button.vue'
 import BarChart from '@/components/charts/BarChart.vue'
@@ -77,7 +75,7 @@ export default {
   components: {
     Table2,
     BarChart,
-    AreaChartApex,
+    
     Button,
     BarChartWithPanels,
     Panel,

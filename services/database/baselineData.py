@@ -15,7 +15,7 @@ def removeEmoji(text):
                             "]+", flags=re.UNICODE)
     return emoji_pattern.sub(r'', text) # no emoji
 
-texts = pd.read_excel('Московский постамат_Дата-cет_Этап 1.xlsx', engine='openpyxl')
+texts = pd.read_excel('Московский_постамат_Дата_cет_Этап_2.xlsx', engine='openpyxl')
 addresses = pd.read_excel('Реестр домов_v11.xlsx', engine='openpyxl')
 
 adress_index = 0
